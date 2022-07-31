@@ -112,7 +112,6 @@ ReactDOM.render(
 
         <Application />
       </RainbowKitProvider>
-
     </WagmiConfig>
   </StrictMode>,
   document.getElementById("root"),

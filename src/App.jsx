@@ -76,7 +76,7 @@ const App = ({ isServerInfo }) => {
     <Layout style={{ height: "100vh", overflow: "auto" }}>
       <Router>
         <Header style={styles.header}>
-          {/* <Logo /> */}
+          <Logo />
           <MenuItems />
           <div style={styles.headerRight}>
             {/* <Chains /> */}
