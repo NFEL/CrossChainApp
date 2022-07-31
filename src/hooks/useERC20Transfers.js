@@ -20,11 +20,9 @@ export const useERC20Transfers = () => {
   return { fetchERC20Transfers, ERC20Transfers, chainId };
 };
 
-
 // import { useEffect, useState } from "react";
 // // import { useMoralis } from "react-moralis";
 // import { useAccount, useNetwork } from "wagmi";
-
 
 // export const useERC20Transfers = () => {
 //   const { account: walletAddress } = useAccount();

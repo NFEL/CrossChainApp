@@ -10,7 +10,6 @@ import QuickStart from "./components/QuickStart";
 
 /** Get your free Moralis Account https://moralis.io/ */
 
-
 import {
   RainbowKitProvider,
   connectorsForWallets,
@@ -53,7 +52,6 @@ const wagmiClient = createClient({
   provider,
 });
 
-
 const Disclaimer = ({ Text, Link }) => (
   <Text>
     By connecting your wallet, you agree to the{" "}
@@ -62,12 +60,6 @@ const Disclaimer = ({ Text, Link }) => (
     <Link href="https://disclaimer.xyz">Disclaimer</Link>
   </Text>
 );
-
-
-
-
-
-
 
 const APP_ID = process.env.REACT_APP_MORALIS_APPLICATION_ID;
 const SERVER_URL = process.env.REACT_APP_MORALIS_SERVER_URL;
@@ -109,7 +101,6 @@ ReactDOM.render(
         }}
         chains={chains}
       >
-
         <Application />
       </RainbowKitProvider>
     </WagmiConfig>
