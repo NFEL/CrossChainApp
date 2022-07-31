@@ -6,7 +6,7 @@ import "./index.css";
 import "@rainbow-me/rainbowkit/styles.css";
 
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
-import QuickStart from "./components/QuickStart";
+import Home from "./components/QuickStart";
 
 /** Get your free Moralis Account https://moralis.io/ */
 
@@ -80,7 +80,7 @@ const Application = () => {
   else {
     return (
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <QuickStart />
+        <Home />
       </div>
     );
   }

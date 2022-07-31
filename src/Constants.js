@@ -60,8 +60,8 @@ export const chainList = {
     multicall: { address: "0xcA11bde05977b3631167028862bE2a173976CA11" },
   },
   5: {
-    name: "G\\u00f6rli",
-    title: "Ethereum Testnet G\\u00f6rli",
+    name: "Goerli",
+    title: "Ethereum Testnet Goerli",
     chain: "ETH",
     network: "testnet",
     rpcUrls: {
@@ -74,7 +74,7 @@ export const chainList = {
       "https://goerli-faucet.slock.it?address=${ADDRESS}",
       "https://faucet.goerli.mudit.blog",
     ],
-    nativeCurrency: { name: "G\\u00f6rli Ether", symbol: "GOR", decimals: 18 },
+    nativeCurrency: { name: "Goerli Ether", symbol: "GOR", decimals: 18 },
     infoURL: "https://goerli.net/#about",
     shortName: "gor",
     chainId: 5,

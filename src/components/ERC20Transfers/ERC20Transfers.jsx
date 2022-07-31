@@ -8,25 +8,26 @@ import { useERC20Transfers } from "../../hooks/useERC20Transfers";
 
 function ERC20Transfers() {
   const { ERC20Transfers, chainId } = useERC20Transfers();
+  console.log({ ERC20Transfers });
   const { Moralis } = useMoralis();
 
   const columns = [
     {
       title: "Token",
-      dataIndex: "address",
-      key: "address",
-      render: (token) => getEllipsisTxt(token, 8),
+      dataIndex: "tokenSymbol",
+      key: "tokenSymbol",
+      render: (token) => token,
     },
     {
       title: "From",
-      dataIndex: "from_address",
-      key: "from_address",
+      dataIndex: "from",
+      key: "from",
       render: (from) => getEllipsisTxt(from, 8),
     },
     {
       title: "To",
-      dataIndex: "to_address",
-      key: "to_address",
+      dataIndex: "to",
+      key: "to",
       render: (to) => getEllipsisTxt(to, 8),
     },
     {
@@ -38,8 +39,8 @@ function ERC20Transfers() {
     },
     {
       title: "Hash",
-      dataIndex: "transaction_hash",
-      key: "transaction_hash",
+      dataIndex: "hash",
+      key: "hash",
       render: (hash) => (
         <a
           href={`${getExplorer(chainId)}tx/${hash}`}
