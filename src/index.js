@@ -20,8 +20,7 @@ import {
 import { configureChains, createClient, WagmiConfig } from "wagmi";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
-import { chainList } from "./Constants";
-const supportedChains = Object.values(chainList);
+import { supportedChains } from "./helpers/networks";
 
 const { chains, provider } = configureChains(supportedChains, [
   // TODO Make this env

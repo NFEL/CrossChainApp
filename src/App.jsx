@@ -56,10 +56,10 @@ const styles = {
     fontWeight: "600",
   },
 };
-const App = ({ isServerInfo }) => {
+const App = () => {
   const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } =
     useMoralis();
-  console.log(isServerInfo);
+  // console.log(isServerInfo);
   // console.log({
   //   isWeb3Enabled,
   //   enableWeb3,
@@ -103,13 +103,13 @@ const App = ({ isServerInfo }) => {
             <Route path="/1inch">
               <Tabs defaultActiveKey="2" style={{ alignItems: "center" }}>
                 <Tabs.TabPane tab={<span>Ethereum</span>} key="1">
-                  <DEX chain="ETH" />
+                  <DEX chain="eth" />
                 </Tabs.TabPane>
                 <Tabs.TabPane tab={<span>Binance Smart Chain</span>} key="2">
-                  <DEX chain="BSC" />
+                  <DEX chain="bsc" />
                 </Tabs.TabPane>
                 <Tabs.TabPane tab={<span>Polygon</span>} key="3">
-                  <DEX chain="Polygon" />
+                  <DEX chain="polygon" />
                 </Tabs.TabPane>
               </Tabs>
             </Route>

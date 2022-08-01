@@ -1,6 +1,7 @@
 import { getWrappedNative } from "helpers/networks";
 import { useEffect, useState } from "react";
-import { useMoralis, useMoralisWeb3Api } from "react-moralis";
+import { useMoralisWeb3Api } from "react-moralis";
+import { useNetwork } from "wagmi";
 import { c2, tokenValueTxt } from "../helpers/formatters";
 
 const IsNative = (address) =>
@@ -8,7 +9,7 @@ const IsNative = (address) =>
 
 const useTokenPrice = (options) => {
   const { token } = useMoralisWeb3Api();
-  const { isInitialized } = useMoralis();
+  const { isInitialized } = useNetwork();
   const [tokenPrice, setTokenPrice] = useState();
 
   useEffect(() => {

@@ -13,7 +13,7 @@
 //         "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?start=1&limit=5000&convert=USD",
 //         { headers: { "X-CMC_PRO_API_KEY": CMC_API_KEY } })
 //     ).json()
-//     // 
+//     //
 //     cache.put(CMC_CACHE_KEY, fetchRes)
 //     cmcCachedPrices = fetchRes;
 //     console.log(fetchRes);
@@ -26,7 +26,6 @@
 
 // }
 
-
 // https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd
 
 // import { CoinGecko } from "coingecko-api";
@@ -36,10 +35,14 @@ export const getTokenPrice = async (tokenSymbol) => {
   // const CoinGeckoClient = new CoinGecko();
   // CoinGeckoClient.coins.fetch(CoinGeckoIds[tokenSymbol]).then((data) => console.log(data))
   const tokenId = CoinGeckoIds[tokenSymbol.toLowerCase()];
-  const fetchRes = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${tokenId}&vs_currencies=usd`)
+  const fetchRes = await fetch(
+    `https://api.coingecko.com/api/v3/simple/price?ids=${tokenId}&vs_currencies=usd`,
+  )
     .then((response) => response.json())
-    .then((data) => { return data })
-  const price = (fetchRes)[tokenId].usd
+    .then((data) => {
+      return data;
+    });
+  const price = fetchRes[tokenId].usd;
   return price || 1;
   // console.log(cmcPrices(tokenSymbol).then((data) => { return data }));
 
@@ -55,5 +58,4 @@ export const getTokenPrice = async (tokenSymbol) => {
   // value: "5268878710433216"
   // [[Prototype]]: Object
   // usdPrice: 9.093794575981569
-
 };

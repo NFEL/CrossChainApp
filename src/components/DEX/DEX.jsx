@@ -10,12 +10,19 @@ import { tokenValue } from "../../helpers/formatters";
 import {
   getWrappedNative,
   getChainIdByName,
-  chainIds,
   nativeAddress,
   IsNative,
+  getExplorer,
 } from "../../helpers/networks";
-import { useNetwork } from "wagmi";
+import {
+  useAccount,
+  useNetwork,
+  usePrepareSendTransaction,
+  useSendTransaction,
+  useWaitForTransaction,
+} from "wagmi";
 
+import { StageSpinner } from "react-spinners-kit";
 const styles = {
   card: {
     width: "430px",
@@ -44,15 +51,19 @@ const styles = {
 
 function DEX({ chain, customTokens = {} }) {
   const { chain: _chain } = useNetwork();
+  const { address: walletAddress, isConnected: isInitialized } = useAccount();
   const chainId = _chain.id;
   const { trySwap, tokenList, getQuote } = useInchDex(chain);
-  const { Moralis, isInitialized } = useMoralis();
+  const { Moralis } = useMoralis();
   const [isFromModalActive, setFromModalActive] = useState(false);
   const [isToModalActive, setToModalActive] = useState(false);
   const [fromToken, setFromToken] = useState();
   const [toToken, setToToken] = useState();
   const [fromAmount, setFromAmount] = useState();
+  const [isConfirmModalAcive, setIsConfirmModalAcive] = useState();
+  // const [isConfirmModalLoading, setIsConfirmModalLoading] = useState(false);
   const [quote, setQuote] = useState();
+  const [swapTRX, setSwapTRX] = useState();
   const [currentTrade, setCurrentTrade] = useState();
   const { fetchTokenPrice } = useTokenPrice();
   const [tokenPricesUSD, setTokenPricesUSD] = useState({});
@@ -99,7 +110,10 @@ function DEX({ chain, customTokens = {} }) {
       ? getWrappedNative(validatedChain)
       : fromToken["address"];
     fetchTokenPrice({
-      params: { chain: validatedChain, address: tokenAddress },
+      params: {
+        chain: `0x${Number(validatedChain).toString(16)}`,
+        address: tokenAddress,
+      },
       onSuccess: (price) =>
         setTokenPricesUSD({
           ...tokenPricesUSD,
@@ -111,12 +125,17 @@ function DEX({ chain, customTokens = {} }) {
 
   useEffect(() => {
     if (!isInitialized || !toToken || !chain) return null;
+
     const validatedChain = chain ? getChainIdByName(chain) : chainId;
     const tokenAddress = IsNative(toToken["address"])
       ? getWrappedNative(validatedChain)
       : toToken["address"];
+
     fetchTokenPrice({
-      params: { chain: validatedChain, address: tokenAddress },
+      params: {
+        chain: `0x${Number(validatedChain).toString(16)}`,
+        address: tokenAddress,
+      },
       onSuccess: (price) =>
         setTokenPricesUSD({
           ...tokenPricesUSD,
@@ -132,11 +151,9 @@ function DEX({ chain, customTokens = {} }) {
   }, [tokens, fromToken]);
 
   const ButtonState = useMemo(() => {
-    if (chainIds?.[chainId] !== chain) {
-      console.log({ chainId, chainIds, chain });
+    if (chainId != getChainIdByName(chain)) {
       return { isActive: false, text: `Switch to ${chain}` };
     }
-
     if (!fromAmount) return { isActive: false, text: "Enter an amount" };
     if (fromAmount && currentTrade) return { isActive: true, text: "Swap" };
     return { isActive: false, text: "Select tokens" };
@@ -148,15 +165,30 @@ function DEX({ chain, customTokens = {} }) {
   }, [toToken, fromToken, fromAmount, chain]);
 
   useEffect(() => {
-    if (currentTrade) getQuote(currentTrade).then((quote) => setQuote(quote));
+    if (currentTrade) {
+      getQuote(currentTrade).then((quote) => setQuote(quote));
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentTrade]);
+  const { config } = usePrepareSendTransaction({
+    request: {
+      ...swapTRX,
+      // to: swapTRX.to,
+      // value: swapTRX.value,
+      // data: swapTRX.data,
+      // from: walletAddress,
+    },
+  });
+  const { data, sendTransaction } = useSendTransaction(config);
+
+  const { isLoading, isSuccess } = useWaitForTransaction({
+    hash: data?.hash,
+  });
 
   const PriceSwap = () => {
     const Quote = quote;
     if (!Quote || !tokenPricesUSD?.[toToken?.["address"]]) return null;
     if (Quote?.statusCode === 400) return <>{Quote.message}</>;
-    console.log(Quote);
     const { fromTokenAmount, toTokenAmount } = Quote;
     const { symbol: fromSymbol } = fromToken;
     const { symbol: toSymbol } = toToken;
@@ -340,7 +372,12 @@ function DEX({ chain, customTokens = {} }) {
             borderRadius: "0.6rem",
             height: "50px",
           }}
-          onClick={() => trySwap(currentTrade)}
+          onClick={() =>
+            trySwap({ ...currentTrade, walletAddress }).then((tx) => {
+              setSwapTRX(tx);
+              setIsConfirmModalAcive(true);
+            })
+          }
           disabled={!ButtonState.isActive}
         >
           {ButtonState.text}
@@ -360,6 +397,47 @@ function DEX({ chain, customTokens = {} }) {
           setToken={setFromToken}
           tokenList={tokens}
         />
+      </Modal>
+      <Modal
+        title="Confirm Swap"
+        visible={isConfirmModalAcive}
+        bodyStyle={{ padding: "10vw" }}
+        onCancel={() => setIsConfirmModalAcive(false)}
+        width="450px"
+        footer={null}
+      >
+        {isLoading && <StageSpinner loading={isLoading} />}
+        <Text>
+          Success : {isSuccess && <Text>Yes</Text>}
+          {!isSuccess && <Text>No</Text>}
+          <br />
+          Loading : {isLoading && <Text>Yes</Text>}
+          {!isLoading && <Text>No</Text>}
+          <br />
+        </Text>
+
+        <Button
+          disabled={isLoading}
+          onClick={() => {
+            sendTransaction();
+          }}
+        >
+          Send
+        </Button>
+        {isSuccess && (
+          <div>
+            Successfully Done {JSON.stringify(currentTrade)} !
+            <div>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href={`${getExplorer(chainId)}/tx/${data?.hash}`}
+              >
+                View Transaction on Scanner
+              </a>
+            </div>
+          </div>
+        )}
       </Modal>
       <Modal
         title="Select a token"
