@@ -28,7 +28,7 @@ const useInchDex = (chain) => {
     // const { fromToken, fromAmount, chain } = params;
     console.log(params);
     alert("not yet implemented! ");
-
+    // await fetch()
     // https://83bhvyizqwpv.usemoralis.com:2053/server/functions/oneInch_quote
     // {"chain":"bsc","fromTokenAddress":"0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee","toTokenAddress":"0xe9e7cea3dedca5984780bafc599bd69add087d56","amount":"1000000000000000","_ApplicationId":"J2WcuA4AFsnToKMvXyPwL34w25aq0wsbcCxapyel","_ClientVersion":"js0.0.176","_InstallationId":"4c15c1d3-830a-45f8-b805-e56b266e217a","_SessionToken":"r:37e814798c49ab7729eb8b402363f275"}
     // {"result":{"status":200,"data":{"success":true,"result":{"fromToken":{"symbol":"BNB","name":"BNB","decimals":18,"address":"0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee","logoURI":"https://tokens.1inch.io/0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c_1.png","tags":["native"]},"toToken":{"symbol":"BUSD","name":"BUSD Token","decimals":18,"address":"0xe9e7cea3dedca5984780bafc599bd69add087d56","logoURI":"https://tokens.1inch.io/0x4fabb145d64652a948d72533023f6e7a623c7c53.png","tags":["tokens"]},"toTokenAmount":"290715427287692957","fromTokenAmount":"1000000000000000","protocols":[[[{"name":"CHEESESWAP","part":100,"fromTokenAddress":"0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee","toTokenAddress":"0xe9e7cea3dedca5984780bafc599bd69add087d56"}]]],"estimatedGas":252364}}}}

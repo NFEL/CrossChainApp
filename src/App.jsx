@@ -12,17 +12,16 @@ import Account from "./components/Account/Account";
 // import ERC20Balance from "./components/ERC20Balance";
 import ERC20Transfers from "./components/ERC20Transfers";
 import DEX from "./components/DEX";
-import NFTBalance from "./components/NFTBalance";
 import Wallet from "./components/Wallet";
 import { Layout, Tabs } from "antd";
 import "antd/dist/antd.css";
 // import NativeBalance from "./components/NativeBalance";
 import "./style.css";
 import Home from "./components/QuickStart";
-import Contract from "./components/Contract/Contract";
 import Text from "antd/lib/typography/Text";
-import Ramper from "./components/Ramper";
 import MenuItems from "./components/MenuItems";
+
+import { TraceSpinner } from "react-spinners-kit";
 
 const ERC20Balance = lazy(() => import("./components/ERC20Balance"));
 const { Header, Footer } = Layout;
@@ -101,48 +100,31 @@ const App = ({ isServerInfo }) => {
             <Route path="/wallet">
               <Wallet />
             </Route>
-
             <Route path="/1inch">
-              <Tabs defaultActiveKey="1" style={{ alignItems: "center" }}>
+              <Tabs defaultActiveKey="2" style={{ alignItems: "center" }}>
                 <Tabs.TabPane tab={<span>Ethereum</span>} key="1">
-                  <DEX chain="eth" />
+                  <DEX chain="ETH" />
                 </Tabs.TabPane>
                 <Tabs.TabPane tab={<span>Binance Smart Chain</span>} key="2">
-                  <DEX chain="bsc" />
+                  <DEX chain="BSC" />
                 </Tabs.TabPane>
                 <Tabs.TabPane tab={<span>Polygon</span>} key="3">
-                  <DEX chain="polygon" />
+                  <DEX chain="Polygon" />
                 </Tabs.TabPane>
               </Tabs>
             </Route>
-
             <Route path="/erc20balance">
               <Profiler id="erc20balance">
-                <Suspense fallback={<div>Loading</div>}>
+                <Suspense fallback={<TraceSpinner color={"Red"} />}>
                   <ERC20Balance />
                 </Suspense>
               </Profiler>
             </Route>
-            <Route path="/onramp">
-              <Ramper />
-            </Route>
             <Route path="/erc20transfers">
               <ERC20Transfers />
             </Route>
-            <Route path="/nftBalance">
-              <NFTBalance />
-            </Route>
-            <Route path="/contract">
-              <Contract />
-            </Route>
             <Route path="/">
-              <Redirect to="/quickstart" />
-            </Route>
-            <Route path="/ethereum-boilerplate">
-              <Redirect to="/quickstart" />
-            </Route>
-            <Route path="/nonauthenticated">
-              <>Please login using the "Authenticate" button</>
+              <Redirect to="/home" />
             </Route>
           </Switch>
         </div>

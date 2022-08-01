@@ -1,7 +1,7 @@
 import { useContractReads, erc20ABI, useAccount } from "wagmi";
-import { chainList, tokenList, MultiCallABI } from "../Constants";
+import { tokenList, MultiCallABI } from "../Constants";
 
-const supportedChains = Object.values(chainList);
+// const supportedChains = Object.values(chainList);
 
 const tokenContractsChainSeparated = (chain, walletAddress) => {
   return {
@@ -57,22 +57,23 @@ function Balances(address, chainId) {
   return resBalances;
 }
 
-function Profile() {
+function Profile(chainId) {
   const { address } = useAccount();
   const profileResult = [];
-  supportedChains.forEach((chain) => {
-    try {
-      // profileResult[chain] = Balances(address, chain.id);
-      // profileResult Balances(address, chain.id);
-      Balances(address, chain.id).forEach((blc) => profileResult.push(blc));
-    } catch (error) {
-      console.log(error);
-    }
-  });
+  Balances(address, chainId).forEach((blc) => profileResult.push(blc));
+
+  // supportedChains.forEach((chain) => {
+  //   try {
+  //     // profileResult[chain] = Balances(address, chain.id);
+  //     // profileResult Balances(address, chain.id);
+  //     Balances(address, chain.id).forEach((blc) => profileResult.push(blc));
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // });
   return profileResult;
 }
 
-export const getUserBalances = (props) => {
-  console.log({ props });
-  return Profile();
+export const getUserBalances = (chainId) => {
+  return Profile(chainId);
 };

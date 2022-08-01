@@ -7,9 +7,14 @@ import Text from "antd/lib/typography/Text";
 import { ArrowDownOutlined } from "@ant-design/icons";
 import { useTokenPrice } from "react-moralis";
 import { tokenValue } from "../../helpers/formatters";
-import { getWrappedNative } from "../../helpers/networks";
+import {
+  getWrappedNative,
+  getChainIdByName,
+  chainIds,
+  nativeAddress,
+  IsNative,
+} from "../../helpers/networks";
 import { useNetwork } from "wagmi";
-// import { useOneInchQuote } from "react-moralis";
 
 const styles = {
   card: {
@@ -36,23 +41,6 @@ const styles = {
     padding: "0 10px",
   },
 };
-
-const nativeAddress = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
-
-const chainIds = {
-  1: "eth",
-  56: "bsc",
-  137: "polygon",
-};
-
-const getChainIdByName = (chainName) => {
-  for (let chainId in chainIds) {
-    if (chainIds[chainId] === chainName) return chainId;
-  }
-};
-
-const IsNative = (address) =>
-  address === "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
 
 function DEX({ chain, customTokens = {} }) {
   const { chain: _chain } = useNetwork();
