@@ -34,16 +34,30 @@ import { CoinGeckoIds } from "./../Constants";
 export const getTokenPrice = async (tokenSymbol) => {
   // const CoinGeckoClient = new CoinGecko();
   // CoinGeckoClient.coins.fetch(CoinGeckoIds[tokenSymbol]).then((data) => console.log(data))
+
   const tokenId = CoinGeckoIds[tokenSymbol.toLowerCase()];
-  const fetchRes = await fetch(
-    `https://api.coingecko.com/api/v3/simple/price?ids=${tokenId}&vs_currencies=usd`,
-  )
-    .then((response) => response.json())
-    .then((data) => {
-      return data;
-    });
-  const price = fetchRes[tokenId].usd;
-  return price || 1;
+  if (!tokenId) {
+    return null;
+  }
+  else {
+
+    try {
+      const fetchRes = await fetch(
+        `https://api.coingecko.com/api/v3/simple/price?ids=${tokenId}&vs_currencies=usd`,
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          return data;
+        });
+      const price = fetchRes[tokenId].usd;
+      return price || 1;
+    }
+    catch (error) {
+      console.error({ errorOnGetTokenPrice: error });
+      return null;
+
+    }
+  }
   // console.log(cmcPrices(tokenSymbol).then((data) => { return data }));
 
   // formattedData:

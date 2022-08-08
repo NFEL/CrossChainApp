@@ -22,6 +22,7 @@ import Text from "antd/lib/typography/Text";
 import MenuItems from "./components/MenuItems";
 
 import { TraceSpinner } from "react-spinners-kit";
+import Bridge from "./components/Bridge";
 
 const ERC20Balance = lazy(() => import("./components/ERC20Balance"));
 const { Header, Footer } = Layout;
@@ -99,6 +100,9 @@ const App = () => {
             </Route>
             <Route path="/wallet">
               <Wallet />
+            </Route>
+            <Route path="/bridge">
+              <Bridge />
             </Route>
             <Route path="/1inch">
               <Tabs defaultActiveKey="2" style={{ alignItems: "center" }}>

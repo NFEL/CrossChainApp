@@ -1,6 +1,6 @@
 import { Skeleton } from "antd";
 import Blockies from "react-blockies";
-import { useMoralis } from "react-moralis";
+import { useAccount } from "wagmi";
 
 /**
  * Shows a blockie image for the provided wallet address
@@ -9,7 +9,8 @@ import { useMoralis } from "react-moralis";
  */
 
 function Blockie(props) {
-  const { account, isAuthenticated } = useMoralis();
+  const isAuthenticated = true;
+  const { account } = useAccount();
   if (!props.address && (!account || !isAuthenticated))
     return <Skeleton.Avatar active size={40} />;
 

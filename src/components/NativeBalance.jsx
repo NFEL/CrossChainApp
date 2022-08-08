@@ -1,8 +1,10 @@
-import { useMoralis, useNativeBalance } from "react-moralis";
+import { useNativeBalance } from "react-moralis";
+import { useAccount } from "wagmi";
 
 function NativeBalance(props) {
   const { data: balance } = useNativeBalance(props);
-  const { account, isAuthenticated } = useMoralis();
+  const isAuthenticated = true;
+  const { account } = useAccount();
 
   if (!account || !isAuthenticated) return null;
 

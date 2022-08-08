@@ -8,7 +8,6 @@ import { useERC20Transfers } from "../../hooks/useERC20Transfers";
 
 function ERC20Transfers() {
   const { ERC20Transfers, chainId } = useERC20Transfers();
-  console.log({ ERC20Transfers });
   const { Moralis } = useMoralis();
 
   const columns = [

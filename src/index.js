@@ -90,7 +90,7 @@ ReactDOM.render(
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider
         showRecentTransactions={true} // https://www.rainbowkit.com/docs/recent-transactions
-        initialChain={56}
+        // initialChain={56}
         theme={{
           lightMode: lightTheme(),
           darkMode: darkTheme(),

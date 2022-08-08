@@ -26,6 +26,10 @@ export const chainList = {
     explorers: [
       { name: "etherscan", url: "https://etherscan.io", standard: "EIP3091" },
     ],
+    blockExplorers: {
+      default:
+        { name: "etherscan", url: "https://etherscan.io", standard: "EIP3091" },
+    },
     id: 1,
     multicall: { address: "0xcA11bde05977b3631167028862bE2a173976CA11" },
     wrapped: { address: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2" },
@@ -57,6 +61,13 @@ export const chainList = {
         standard: "EIP3091",
       },
     ],
+    blockExplorers: {
+      default: {
+        name: "etherscan-rinkeby",
+        url: "https://rinkeby.etherscan.io",
+        standard: "EIP3091",
+      }
+    },
     id: 4,
     wrapped: { address: "0xDf032Bc4B9dC2782Bb09352007D4C57B75160B15" },
     multicall: { address: "0xcA11bde05977b3631167028862bE2a173976CA11" },
@@ -89,6 +100,13 @@ export const chainList = {
         standard: "EIP3091",
       },
     ],
+    blockExplorers: {
+      default: {
+        name: "etherscan-goerli",
+        url: "https://goerli.etherscan.io",
+        standard: "EIP3091",
+      }
+    },
     id: 5,
     wrapped: { address: "0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6" },
     multicall: { address: "0xcA11bde05977b3631167028862bE2a173976CA11" },
@@ -121,6 +139,13 @@ export const chainList = {
         standard: "EIP3091",
       },
     ],
+    blockExplorers: {
+      default: {
+        name: "etherscan-sepolia",
+        url: "https://sepolia.etherscan.io/",
+        standard: "EIP3091",
+      }
+    },
     id: 11155111,
     wrapped: { address: "0xf531b8f309be94191af87605cfbf600d71c2cfe0" },
     multicall: { address: "0xcA11bde05977b3631167028862bE2a173976CA11" },
@@ -144,6 +169,13 @@ export const chainList = {
         standard: "EIP3091",
       },
     ],
+    blockExplorers: {
+      default: {
+        name: "etherscan",
+        url: "https://optimistic.etherscan.io",
+        standard: "EIP3091",
+      }
+    },
     id: 10,
     multicall: { address: "0xcA11bde05977b3631167028862bE2a173976CA11" },
   },
@@ -178,6 +210,13 @@ export const chainList = {
         standard: "EIP3091",
       },
     ],
+    blockExplorers: {
+      default: {
+        name: "etherscan",
+        url: "https://kovan.etherscan.io",
+        standard: "EIP3091",
+      }
+    },
     infoURL: "https://kovan-testnet.github.io/website",
     shortName: "kov",
     chainId: 42,
@@ -190,6 +229,7 @@ export const chainList = {
     name: "Binance Smart Chain Mainnet",
     chain: "BSC",
     rpcUrls: { default: "https://bsc-dataseed1.binance.org" },
+    iconUrl: "https://cryptologos.cc/logos/bnb-bnb-logo.png?v=023",
     rpc: [
       "https://bsc-dataseed1.binance.org",
       "https://bsc-dataseed2.binance.org",
@@ -219,14 +259,20 @@ export const chainList = {
     explorers: [
       { name: "bscscan", url: "https://bscscan.com", standard: "EIP3091" },
     ],
+    blockExplorers: {
+      default: { name: "bscscan", url: "https://bscscan.com", standard: "EIP3091" },
+
+    },
     id: 56,
     wrapped: { address: "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c" },
     multicall: { address: "0xcA11bde05977b3631167028862bE2a173976CA11" },
   },
   100: {
+    iconUrl: "https://cryptologos.cc/logos/gnosis-gno-gno-logo.png?v=023",
+    iconBackground: '#fff',
+    testnet: false,
     name: "Gnosis Chain",
     chain: "GNO",
-    icon: "gnosis",
     rpcUrls: { default: "https://rpc.gnosischain.com" },
     rpc: [
       "https://rpc.gnosischain.com",
@@ -254,6 +300,14 @@ export const chainList = {
         standard: "EIP3091",
       },
     ],
+    blockExplorers: {
+      default: {
+        name: "blockscout",
+        url: "https://blockscout.com/xdai/mainnet",
+        icon: "blockscout",
+        standard: "EIP3091",
+      },
+    },
     id: 100,
     wrapped: { address: "0xe91D153E0b41518A2Ce8Dd3D7944Fa863463a97d" },
     multicall: { address: "0xcA11bde05977b3631167028862bE2a173976CA11" },
@@ -261,6 +315,7 @@ export const chainList = {
   128: {
     name: "Huobi ECO Chain Mainnet",
     chain: "Heco",
+    iconUrl: "https://seeklogo.com/images/H/heco-logo-B2DCC2EA11-seeklogo.com.png",
     rpcUrls: { default: "https://http-mainnet.hecochain.com" },
     rpc: [
       "https://http-mainnet.hecochain.com",
@@ -280,6 +335,10 @@ export const chainList = {
     explorers: [
       { name: "hecoinfo", url: "https://hecoinfo.com", standard: "EIP3091" },
     ],
+    blockExplorers: {
+      default: { name: "hecoinfo", url: "https://hecoinfo.com", standard: "EIP3091" },
+
+    },
     id: 128,
     wrapped: { address: "0x5545153ccfca01fbd7dd11c0b23ba694d9509a6f" },
     multicall: { address: "0xcA11bde05977b3631167028862bE2a173976CA11" },
@@ -310,6 +369,14 @@ export const chainList = {
         standard: "EIP3091",
       },
     ],
+
+    blockExplorers: {
+      default: {
+        name: "polygonscan",
+        url: "https://polygonscan.com",
+        standard: "EIP3091",
+      }
+    },
     id: 137,
     wrapped: { address: "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270" },
     multicall: { address: "0xcA11bde05977b3631167028862bE2a173976CA11" },
@@ -317,6 +384,7 @@ export const chainList = {
   250: {
     name: "Fantom Opera",
     chain: "FTM",
+    iconUrl: "https://cryptologos.cc/logos/fantom-ftm-logo.png?v=023",
     rpcUrls: { default: "https://rpc.ftm.tools" },
     rpc: ["https://rpc.ftm.tools"],
     faucets: ["https://free-online-app.com/faucet-for-eth-evm-chains/"],
@@ -334,10 +402,45 @@ export const chainList = {
         standard: "EIP3091",
       },
     ],
+    blockExplorers: {
+      default: {
+        name: "ftmscan",
+        url: "https://ftmscan.com",
+        icon: "ftmscan",
+        standard: "EIP3091",
+      }
+    },
     wrapped: { address: "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83" },
     id: 250,
     multicall: { address: "0xcA11bde05977b3631167028862bE2a173976CA11" },
   },
+  // 787: {
+  //   name: "Acala Network",
+  //   chain: "ACA",
+  //   iconUrl: "https://cryptologos.cc/logos/fantom-ftm-logo.png?v=023",
+  //   rpcUrls: { default: "https://eth-rpc-acala.aca-api.network" },
+  //   rpc: ["https://eth-rpc-acala.aca-api.network"],
+  //   nativeCurrency: { name: "ACALA", symbol: "ACA", decimals: 18 },
+  //   shortName: "aca",
+  //   chainId: 787,
+  //   networkId: 787,
+  //   icon: "aca",
+  //   explorers: [
+  //     {
+  //       name: "acala-scanner",
+  //       url: "https://blockscout.acala.network",
+  //     },
+  //   ],
+  //   blockExplorers: {
+  //     default: {
+  //       name: "acala-scanner",
+  //       url: "https://blockscout.acala.network",
+  //     }
+  //   },
+  //   wrapped: { address: "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83" },
+  //   id: 787,
+  //   multicall: { address: "0xcA11bde05977b3631167028862bE2a173976CA11" },
+  // },
   42161: {
     name: "Arbitrum One",
     chainId: 42161,
@@ -359,7 +462,9 @@ export const chainList = {
         url: "https://explorer.arbitrum.io",
         standard: "EIP3091",
       },
-    ],
+    ], blockExplorers: {
+      default: { name: "Arbiscan", url: "https://arbiscan.io", standard: "EIP3091" },
+    },
     infoURL: "https://arbitrum.io",
     parent: {
       type: "L2",
@@ -375,6 +480,7 @@ export const chainList = {
     chainId: 42220,
     shortName: "CELO",
     chain: "CELO",
+    iconUrl: "https://cryptologos.cc/logos/celo-celo-logo.png?v=023",
     networkId: 42220,
     nativeCurrency: { name: "CELO", symbol: "CELO", decimals: 18 },
     rpcUrls: {
@@ -391,6 +497,13 @@ export const chainList = {
         standard: "none",
       },
     ],
+    blockExplorers: {
+      default: {
+        name: "blockscout",
+        url: "https://explorer.celo.org",
+        standard: "none",
+      }
+    },
     id: 42220,
     wrapped: { address: "0x3Ad443d769A07f287806874F8E5405cE3Ac902b9" },
     multicall: { address: "0xcA11bde05977b3631167028862bE2a173976CA11" },
@@ -410,6 +523,9 @@ export const chainList = {
     explorers: [
       { name: "snowtrace", url: "https://snowtrace.io", standard: "EIP3091" },
     ],
+    blockExplorers: {
+      default: { name: "snowtrace", url: "https://snowtrace.io", standard: "EIP3091" },
+    },
     wrapped: { address: "0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7" },
     id: 43114,
     multicall: { address: "0xcA11bde05977b3631167028862bE2a173976CA11" },

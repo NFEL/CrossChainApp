@@ -34,7 +34,14 @@ function Balances(address, chainId) {
   const { data: balances } = useContractReads({
     contracts,
     allowFailure: true,
-    suspense: true,
+    // suspense: true,
+    // enabled: true,
+    // onError: (err) => {
+    //   console.error({ errorOnFetchingTokenBalacnes: err });
+    // },
+    // onSuccess: (data) => {
+    //   console.log({ dataOnBalances: data })
+    // },
     // watch: true,
     // cacheOnBlock: true,
   });
@@ -57,23 +64,29 @@ function Balances(address, chainId) {
   return resBalances;
 }
 
-function Profile(chainId) {
+// function Profile(chainId) {
+//   const { address } = useAccount();
+//   const profileResult = [];
+//   c.forEach((blc) => profileResult.push(blc));
+
+//   // supportedChains.forEach((chain) => {
+//   //   try {
+//   //     // profileResult[chain] = Balances(address, chain.id);
+//   //     // profileResult Balances(address, chain.id);
+//   //     Balances(address, chain.id).forEach((blc) => profileResult.push(blc));
+//   //   } catch (error) {
+//   //     console.log(error)
+//   //   }
+//   // });
+//   return profileResult;
+// }
+
+export const UserBalances = (chainId) => {
   const { address } = useAccount();
-  const profileResult = [];
-  Balances(address, chainId).forEach((blc) => profileResult.push(blc));
-
-  // supportedChains.forEach((chain) => {
-  //   try {
-  //     // profileResult[chain] = Balances(address, chain.id);
-  //     // profileResult Balances(address, chain.id);
-  //     Balances(address, chain.id).forEach((blc) => profileResult.push(blc));
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // });
-  return profileResult;
-}
-
-export const getUserBalances = (chainId) => {
-  return Profile(chainId);
+  try {
+    return Balances(address, chainId);
+  } catch {
+    // console.log({ errorOnUserBalacnes: error, address, chainId })
+    return [];
+  }
 };

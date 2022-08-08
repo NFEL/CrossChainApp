@@ -6,7 +6,10 @@ function Account() {
   return (
     <>
       <ConnectButton
-        accountStatus="avatar"
+        accountStatus={{
+          smallScreen: "avatar",
+          largeScreen: "full",
+        }}
         chainStatus="icon"
         showBalance={{
           smallScreen: false,
