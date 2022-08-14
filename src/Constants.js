@@ -27,8 +27,11 @@ export const chainList = {
       { name: "etherscan", url: "https://etherscan.io", standard: "EIP3091" },
     ],
     blockExplorers: {
-      default:
-        { name: "etherscan", url: "https://etherscan.io", standard: "EIP3091" },
+      default: {
+        name: "etherscan",
+        url: "https://etherscan.io",
+        standard: "EIP3091",
+      },
     },
     id: 1,
     multicall: { address: "0xcA11bde05977b3631167028862bE2a173976CA11" },
@@ -66,7 +69,7 @@ export const chainList = {
         name: "etherscan-rinkeby",
         url: "https://rinkeby.etherscan.io",
         standard: "EIP3091",
-      }
+      },
     },
     id: 4,
     wrapped: { address: "0xDf032Bc4B9dC2782Bb09352007D4C57B75160B15" },
@@ -105,7 +108,7 @@ export const chainList = {
         name: "etherscan-goerli",
         url: "https://goerli.etherscan.io",
         standard: "EIP3091",
-      }
+      },
     },
     id: 5,
     wrapped: { address: "0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6" },
@@ -144,7 +147,7 @@ export const chainList = {
         name: "etherscan-sepolia",
         url: "https://sepolia.etherscan.io/",
         standard: "EIP3091",
-      }
+      },
     },
     id: 11155111,
     wrapped: { address: "0xf531b8f309be94191af87605cfbf600d71c2cfe0" },
@@ -174,7 +177,7 @@ export const chainList = {
         name: "etherscan",
         url: "https://optimistic.etherscan.io",
         standard: "EIP3091",
-      }
+      },
     },
     id: 10,
     multicall: { address: "0xcA11bde05977b3631167028862bE2a173976CA11" },
@@ -215,7 +218,7 @@ export const chainList = {
         name: "etherscan",
         url: "https://kovan.etherscan.io",
         standard: "EIP3091",
-      }
+      },
     },
     infoURL: "https://kovan-testnet.github.io/website",
     shortName: "kov",
@@ -260,8 +263,11 @@ export const chainList = {
       { name: "bscscan", url: "https://bscscan.com", standard: "EIP3091" },
     ],
     blockExplorers: {
-      default: { name: "bscscan", url: "https://bscscan.com", standard: "EIP3091" },
-
+      default: {
+        name: "bscscan",
+        url: "https://bscscan.com",
+        standard: "EIP3091",
+      },
     },
     id: 56,
     wrapped: { address: "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c" },
@@ -269,7 +275,7 @@ export const chainList = {
   },
   100: {
     iconUrl: "https://cryptologos.cc/logos/gnosis-gno-gno-logo.png?v=023",
-    iconBackground: '#fff',
+    iconBackground: "#fff",
     testnet: false,
     name: "Gnosis Chain",
     chain: "GNO",
@@ -315,7 +321,8 @@ export const chainList = {
   128: {
     name: "Huobi ECO Chain Mainnet",
     chain: "Heco",
-    iconUrl: "https://seeklogo.com/images/H/heco-logo-B2DCC2EA11-seeklogo.com.png",
+    iconUrl:
+      "https://seeklogo.com/images/H/heco-logo-B2DCC2EA11-seeklogo.com.png",
     rpcUrls: { default: "https://http-mainnet.hecochain.com" },
     rpc: [
       "https://http-mainnet.hecochain.com",
@@ -336,8 +343,11 @@ export const chainList = {
       { name: "hecoinfo", url: "https://hecoinfo.com", standard: "EIP3091" },
     ],
     blockExplorers: {
-      default: { name: "hecoinfo", url: "https://hecoinfo.com", standard: "EIP3091" },
-
+      default: {
+        name: "hecoinfo",
+        url: "https://hecoinfo.com",
+        standard: "EIP3091",
+      },
     },
     id: 128,
     wrapped: { address: "0x5545153ccfca01fbd7dd11c0b23ba694d9509a6f" },
@@ -375,7 +385,7 @@ export const chainList = {
         name: "polygonscan",
         url: "https://polygonscan.com",
         standard: "EIP3091",
-      }
+      },
     },
     id: 137,
     wrapped: { address: "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270" },
@@ -408,7 +418,7 @@ export const chainList = {
         url: "https://ftmscan.com",
         icon: "ftmscan",
         standard: "EIP3091",
-      }
+      },
     },
     wrapped: { address: "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83" },
     id: 250,
@@ -462,8 +472,13 @@ export const chainList = {
         url: "https://explorer.arbitrum.io",
         standard: "EIP3091",
       },
-    ], blockExplorers: {
-      default: { name: "Arbiscan", url: "https://arbiscan.io", standard: "EIP3091" },
+    ],
+    blockExplorers: {
+      default: {
+        name: "Arbiscan",
+        url: "https://arbiscan.io",
+        standard: "EIP3091",
+      },
     },
     infoURL: "https://arbitrum.io",
     parent: {
@@ -502,7 +517,7 @@ export const chainList = {
         name: "blockscout",
         url: "https://explorer.celo.org",
         standard: "none",
-      }
+      },
     },
     id: 42220,
     wrapped: { address: "0x3Ad443d769A07f287806874F8E5405cE3Ac902b9" },
@@ -524,7 +539,11 @@ export const chainList = {
       { name: "snowtrace", url: "https://snowtrace.io", standard: "EIP3091" },
     ],
     blockExplorers: {
-      default: { name: "snowtrace", url: "https://snowtrace.io", standard: "EIP3091" },
+      default: {
+        name: "snowtrace",
+        url: "https://snowtrace.io",
+        standard: "EIP3091",
+      },
     },
     wrapped: { address: "0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7" },
     id: 43114,
@@ -26810,3 +26829,10 @@ export const CoinGeckoIds = {
   zyr: "zyrri",
   zyx: "zyx",
 };
+
+export const allTokensInOrder = (() => {
+  // tokenList.foreach()
+  const t = [];
+  Object.keys(tokenList).forEach((chain) => t.push(tokenList[chain]));
+  return t.flat();
+})();

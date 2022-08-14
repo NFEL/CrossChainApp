@@ -10,7 +10,7 @@ import Account from "./components/Account/Account";
 // import Chains from "./components/Chains";
 // import TokenPrice from "./components/TokenPrice";
 // import ERC20Balance from "./components/ERC20Balance";
-import ERC20Transfers from "./components/ERC20Transfers";
+import TransactionHistory from "./components/TransactionHistory";
 import DEX from "./components/DEX";
 import Wallet from "./components/Wallet";
 import { Layout, Tabs } from "antd";
@@ -18,6 +18,7 @@ import "antd/dist/antd.css";
 // import NativeBalance from "./components/NativeBalance";
 import "./style.css";
 import Home from "./components/QuickStart";
+// import Home from "./components/Home";
 import Text from "antd/lib/typography/Text";
 import MenuItems from "./components/MenuItems";
 
@@ -124,8 +125,8 @@ const App = () => {
                 </Suspense>
               </Profiler>
             </Route>
-            <Route path="/erc20transfers">
-              <ERC20Transfers />
+            <Route path="/trxhistory">
+              <TransactionHistory />
             </Route>
             <Route path="/">
               <Redirect to="/home" />

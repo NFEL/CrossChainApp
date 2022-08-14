@@ -1,21 +1,28 @@
 import React from "react";
 import { useMoralis } from "react-moralis";
-import { getEllipsisTxt } from "../../helpers/formatters";
-import { getExplorer } from "../../helpers/networks";
+import { getEllipsisTxt } from "../helpers/formatters";
+import { getExplorer } from "../helpers/networks";
 import "antd/dist/antd.css";
 import { Skeleton, Table } from "antd";
-import { useERC20Transfers } from "../../hooks/useERC20Transfers";
+import { useTransactionHistory } from "../hooks/useTransactionHistory";
 
-function ERC20Transfers() {
-  const { ERC20Transfers, chainId } = useERC20Transfers();
+function TransactionHistory() {
+  const { transactionHistory, chainId } = useTransactionHistory();
   const { Moralis } = useMoralis();
 
   const columns = [
     {
-      title: "Token",
-      dataIndex: "tokenSymbol",
-      key: "tokenSymbol",
-      render: (token) => token,
+      title: "Time",
+      dataIndex: "timeStamp",
+      key: "timeStamp",
+      render: (timeStamp) =>
+        new Date(timeStamp * 1000).toLocaleDateString(undefined, {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+          hour: "numeric",
+        }),
     },
     {
       title: "From",
@@ -42,7 +49,7 @@ function ERC20Transfers() {
       key: "hash",
       render: (hash) => (
         <a
-          href={`${getExplorer(chainId)}tx/${hash}`}
+          href={`${getExplorer(chainId)}/tx/${hash}`}
           target="_blank"
           rel="noreferrer"
         >
@@ -55,10 +62,10 @@ function ERC20Transfers() {
   let key = 0;
   return (
     <div style={{ width: "65vw", padding: "15px" }}>
-      <h1>💸ERC20 Transfers</h1>
-      <Skeleton loading={!ERC20Transfers}>
+      <h1>💸 Transaction History</h1>
+      <Skeleton loading={!transactionHistory}>
         <Table
-          dataSource={ERC20Transfers}
+          dataSource={transactionHistory}
           columns={columns}
           rowKey={(record) => {
             key++;
@@ -70,4 +77,4 @@ function ERC20Transfers() {
   );
 }
 
-export default ERC20Transfers;
+export default TransactionHistory;

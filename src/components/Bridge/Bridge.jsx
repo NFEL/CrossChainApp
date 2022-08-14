@@ -18,7 +18,13 @@ const styles = {
     borderRadius: "12px",
   },
 };
-const menuItems = [];
+const menuItems = [
+  {
+    key: "0x1",
+    value: "Ethereum",
+    icon: <h1>asd </h1>,
+  },
+];
 // const menuItems = [
 //   {
 //     key: "0x1",

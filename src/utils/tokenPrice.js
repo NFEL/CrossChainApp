@@ -38,9 +38,7 @@ export const getTokenPrice = async (tokenSymbol) => {
   const tokenId = CoinGeckoIds[tokenSymbol.toLowerCase()];
   if (!tokenId) {
     return null;
-  }
-  else {
-
+  } else {
     try {
       const fetchRes = await fetch(
         `https://api.coingecko.com/api/v3/simple/price?ids=${tokenId}&vs_currencies=usd`,
@@ -51,11 +49,9 @@ export const getTokenPrice = async (tokenSymbol) => {
         });
       const price = fetchRes[tokenId].usd;
       return price || 1;
-    }
-    catch (error) {
+    } catch (error) {
       console.error({ errorOnGetTokenPrice: error });
       return null;
-
     }
   }
   // console.log(cmcPrices(tokenSymbol).then((data) => { return data }));
